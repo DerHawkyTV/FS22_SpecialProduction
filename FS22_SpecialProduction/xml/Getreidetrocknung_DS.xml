@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<placeable type="productionPoint" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../shared/xml/schema/placeable.xsd">
+    <storeData>
+		<name>
+			<en>Grain drying</en>
+			<de>Getreidetrocknung</de>
+		</name>
+        <functions>
+            <function>$l10n_function_productionPoint</function>
+        </functions>
+        <image>store_Getreidetrocknung_DS.png</image>
+        <price>30000</price>
+        <lifetime>1000</lifetime>
+        <rotation>0</rotation>
+        <brand>NONE</brand>
+        <species>placeable</species>
+        <category>productionPoints</category>
+        <brush>
+            <type>placeable</type>
+            <category>production</category>
+            <tab>factories</tab>
+        </brush>
+        <storeIconRendering>
+            <settings cameraXRot="-30" cameraYRot="-30" advancedBoundingBox="true"/>
+        </storeIconRendering>
+        <vertexBufferMemoryUsage>941568</vertexBufferMemoryUsage>
+        <indexBufferMemoryUsage>141568</indexBufferMemoryUsage>
+        <textureMemoryUsage>18546688</textureMemoryUsage>
+        <audioMemoryUsage>0</audioMemoryUsage>
+        <instanceVertexBufferMemoryUsage>0</instanceVertexBufferMemoryUsage>
+        <instanceIndexBufferMemoryUsage>0</instanceIndexBufferMemoryUsage>
+    </storeData>
+
+    <base>
+        <filename>i3d/Getreidetrocknung_DS.i3d</filename>
+        <canBeRenamed>true</canBeRenamed>
+
+    </base>
+
+    <placement useRandomYRotation="false" useManualYRotation="true" >
+        <testAreas>
+            <testArea startNode="testArea1Start" endNode="testArea1End" />
+        </testAreas>
+
+        <sounds>
+            <place template="medImp" />
+        </sounds>
+    </placement>
+
+    <clearAreas>
+        <clearArea startNode="clearArea1Start" widthNode="clearArea1Width" heightNode="clearArea1Height"/>
+    </clearAreas>
+
+    <leveling requireLeveling="true" maxSmoothDistance="10" maxSlope="75" maxEdgeAngle="30" >
+        <levelAreas>
+            <levelArea startNode="clearArea1Start" widthNode="clearArea1Width" heightNode="clearArea1Height" groundType="asphalt"/>
+        </levelAreas>
+    </leveling>
+
+    <indoorAreas>
+        <indoorArea startNode="indoorArea1Start" widthNode="indoorArea1Width" heightNode="indoorArea1Height"/>
+    </indoorAreas>
+
+    <tipOcclusionUpdateAreas>
+        <tipOcclusionUpdateArea startNode="tipOcclusionUpdateArea1Start" endNode="tipOcclusionUpdateArea1End" />
+    </tipOcclusionUpdateAreas>
+
+    <ai>
+        <updateAreas>
+            <updateArea startNode="tipOcclusionUpdateArea1Start" endNode="tipOcclusionUpdateArea1End" />
+        </updateAreas>
+    </ai>
+
+    <infoTrigger triggerNode="infoTrigger"/>
+
+    <triggerMarkers>
+        <triggerMarker node="0>12|5"       					  filename="$data/shared/assets/marker/markerIcons.xml" id="UNLOAD" adjustToGround="false" />
+        <triggerMarker node="playerTriggerMarker"             filename="$data/shared/assets/marker/markerIcons.xml" id="WRENCH" adjustToGround="true" />
+        <triggerMarker node="markerLoading" 				  filename="$data/shared/assets/marker/markerIcons.xml" id="LOAD" 	adjustToGround="true" />		
+    </triggerMarkers>
+
+    <hotspots>
+        <hotspot type="PRODUCTION_POINT" linkNode="mapPosition" teleportNode="mapPosition"/>
+    </hotspots>
+
+    <productionPoint>
+        <productions sharedThroughputCapacity="false">
+			<production id="WHEATDRYING" name="$l10n_fillType_wheat_drying" cyclesPerHour="60" costsPerActiveHour="20">
+                <inputs>
+                    <input fillType="SUGARBEET" 	amount="1000" />
+					<input fillType="DIESEL" 	amount="20" />
+               </inputs>
+               <outputs>
+                    <output fillType="FORAGE" 	            amount="1950" />
+                    <output fillType="SUGARBEET_CUT"  		amount="950" />
+                    <output fillType="STONE"  		        amount="2500" />						
+               </outputs>
+			</production>
+			<production id="BARLEYDRYING" name="$l10n_fillType_barley_drying" cyclesPerHour="60" costsPerActiveHour="2">
+                <inputs>
+                    <input fillType="BARLEY" 	            amount="1000" />
+					<input fillType="DIESEL" 	            amount="20" />
+               </inputs>
+               <outputs>
+                    <output fillType="BARLEYDRYING" 	amount="4950" />
+                    <output fillType="FERTILIZER"  		amount="4950" />				
+                    <output fillType="FFGROWBIG" 	    amount="4950" />
+                    <output fillType="FFSOIL"  		    amount="5000" />		
+               </outputs>
+			</production>
+			<production id="MAIZEDRYING" name="$l10n_fillType_maize_drying" cyclesPerHour="45" costsPerActiveHour="2">
+                <inputs>
+                    <input fillType="MAIZE" 	        amount="1000" />
+					<input fillType="DIESEL" 	        amount="20" />
+               </inputs>
+               <outputs>
+                    <output fillType="MAIZEDRYING" 	    amount="9500" />
+                    <output fillType="STONE"  		    amount="500" />	
+                    <output fillType="SEEDS" 	        amount="9500" />
+                    <output fillType="CLONES"  		    amount="5000" />					
+               </outputs>
+			</production>
+			<production id="OATDRYING" name="$l10n_fillType_oat_drying" cyclesPerHour="60" costsPerActiveHour="20">
+                <inputs>
+                    <input fillType="CLONES" 	amount="1000" />
+					<input fillType="DIESEL" 	amount="20" />
+               </inputs>
+               <outputs>
+                    <output fillType="HCANNABIS" 	amount="1950" />
+                    <output fillType="DRYCANNA"  	amount="2550" />					
+               </outputs>
+			</production>			
+        </productions>
+
+        <sellingStation node="sellingStation" appearsOnStats="true" hideFromPricesMenu="true" supportsExtension="true">
+
+            <unloadTrigger exactFillRootNode="unloadTriggerBunker"       fillTypes="DRYCANNA HCANNABIS BARLEY WHEAT OAT MAIZE STONE DIESEL OATDRYING MAIZEDRYING BARLEYDRYING WHEATDRYING FFSOIL FFGROWBIG FERTILIZER CLONES SEEDS SUGARBEET_CUT SUGARBEET FORAGE" />
+            <unloadTrigger fillTypes="DRYCANNA HCANNABIS BARLEY WHEAT OAT MAIZE STONE DIESEL OATDRYING MAIZEDRYING BARLEYDRYING WHEATDRYING FFSOIL FFGROWBIG FERTILIZER CLONES SEEDS SUGARBEET_CUT SUGARBEET FORAGE">
+                <baleTrigger triggerNode="baleTriggerBunker" />
+            </unloadTrigger>
+
+            <unloadTrigger exactFillRootNode="unloadTriggerInFront"      fillTypes="DRYCANNA HCANNABIS BARLEY WHEAT OAT MAIZE STONE DIESEL OATDRYING MAIZEDRYING BARLEYDRYING WHEATDRYING FFSOIL FFGROWBIG FERTILIZER CLONES SEEDS SUGARBEET_CUT SUGARBEET FORAGE" aiNode="unloadTriggerInFrontAINode" />
+            <unloadTrigger fillTypes="DRYCANNA HCANNABIS BARLEY WHEAT OAT MAIZE STONE DIESEL OATDRYING MAIZEDRYING BARLEYDRYING WHEATDRYING FFSOIL FFGROWBIG FERTILIZER CLONES SEEDS SUGARBEET_CUT SUGARBEET FORAGE">
+                <baleTrigger triggerNode="baleTriggerInFront" />
+            </unloadTrigger>
+        </sellingStation>
+
+        <loadingStation>
+	    <loadTrigger triggerNode="loadingTrigger" fillLitersPerSecond="5000" dischargeNode="dischargeNode" fillTypes="DRYCANNA HCANNABIS BARLEY WHEAT OAT MAIZE STONE DIESEL OATDRYING MAIZEDRYING BARLEYDRYING WHEATDRYING FFSOIL FFGROWBIG FERTILIZER CLONES SEEDS SUGARBEET_CUT SUGARBEET FORAGE" aiNode="aiLoadingNode">
+                <effectNode effectClass="PipeEffect" effectNode="pipeEffect"      materialType="pipe"           fadeTime="0.5" maxBending="0" controlPoint="4.8 0 0 0" />
+                <effectNode                          effectNode="pipeEffectSmoke" materialType="unloadingSmoke" fadeTime="0.5" />
+        </loadTrigger>
+            <loadTrigger triggerNode="loadTrigger" fillLitersPerSecond="25000" fillTypes="DIGESTATE" />		
+       </loadingStation>
+
+        <storage isExtension="false" fillLevelSyncThreshold="100">
+        <capacity fillType="BARLEY"    			capacity="500000" />
+		<capacity fillType="WHEAT"    			capacity="500000" />
+        <capacity fillType="HCANNABIS"    			capacity="500000" />
+		<capacity fillType="DRYCANNA"    			capacity="500000" />
+		<capacity fillType="OAT"    			capacity="500000" />
+        <capacity fillType="FFSOIL"    			capacity="500000" />
+		<capacity fillType="FFGROWBIG"    		capacity="500000" />
+		<capacity fillType="FERTILIZER"    		capacity="500000" />
+        <capacity fillType="SEEDS"    	    	capacity="500000" />
+		<capacity fillType="MAIZE"     			capacity="500000" />
+		<capacity fillType="STONE"     			capacity="250000" />
+        <capacity fillType="DIESEL"    			capacity="150000" />
+		<capacity fillType="OATDRYING"    		capacity="600000" />
+		<capacity fillType="MAIZEDRYING"    	capacity="600000" />
+		<capacity fillType="BARLEYDRYING"     	capacity="600000" />
+		<capacity fillType="WHEATDRYING"     	capacity="600000" />
+        <capacity fillType="CLONES"     	    capacity="600000" />
+        <capacity fillType="SUGARBEET_CUT"     	capacity="600000" />		
+        <capacity fillType="SUGARBEET"     	    capacity="600000" />
+        <capacity fillType="FORAGE"     	    capacity="600000" />
+            <dynamicFillPlane node="bunkerFillVolume" allSidePlanes="false" maxAllowedHeapAngle="10" maxDelta="0.3" defaultFillType="WHEAT" />
+        </storage>
+
+        <playerTrigger node="playerTrigger" />
+
+        <sounds>
+            <idle template="dairyIdle" linkNode="0>" outerRadius="50"/>
+            <active template="dairyWork" linkNode="0>" outerRadius="50"/>
+        </sounds>
+    </productionPoint>
+
+    <i3dMappings>
+        <i3dMapping id="loadingTrigger" node="0>14|6|1|0" />
+        <i3dMapping id="dischargeNode" node="0>14|6|1|1" />
+        <i3dMapping id="pipeEffect" node="0>14|6|1|3|0" />
+        <i3dMapping id="pipeEffectSmoke" node="0>14|6|1|3|1" />	
+        <i3dMapping id="markerLoading" node="0>14|6|2" />	
+        <i3dMapping id="aiLoadingNode" node="0>14|6|1|2" />
+        <i3dMapping id="mapPosition" node="0>14|6|0" />	
+		
+        <i3dMapping id="clearArea1Start" node="0>0|0" />
+        <i3dMapping id="clearArea1Width" node="0>0|0|0" />
+        <i3dMapping id="clearArea1Height" node="0>0|0|1" />
+        <i3dMapping id="clearArea2Start" node="0>0|1" />
+        <i3dMapping id="clearArea2Width" node="0>0|1|0" />
+        <i3dMapping id="clearArea2Height" node="0>0|1|1" />
+        <i3dMapping id="clearArea3Start" node="0>0|2" />
+        <i3dMapping id="clearArea3Width" node="0>0|2|0" />
+        <i3dMapping id="clearArea3Height" node="0>0|2|1" />
+        <i3dMapping id="clearArea4Start" node="0>0|3" />
+        <i3dMapping id="clearArea4Width" node="0>0|3|0" />
+        <i3dMapping id="clearArea4Height" node="0>0|3|1" />
+        <i3dMapping id="clearArea5Start" node="0>0|4" />
+        <i3dMapping id="clearArea5Width" node="0>0|4|0" />
+        <i3dMapping id="clearArea5Height" node="0>0|4|1" />
+        <i3dMapping id="levelArea1Start" node="0>1|0" />
+        <i3dMapping id="levelArea1Width" node="0>1|0|0" />
+        <i3dMapping id="levelArea1Height" node="0>1|0|1" />
+        <i3dMapping id="indoorArea1Start" node="0>3|0" />
+        <i3dMapping id="indoorArea1Width" node="0>3|0|0" />
+        <i3dMapping id="indoorArea1Height" node="0>3|0|1" />
+        <i3dMapping id="indoorArea2Start" node="0>3|1" />
+        <i3dMapping id="indoorArea2Width" node="0>3|1|0" />
+        <i3dMapping id="indoorArea2Height" node="0>3|1|1" />
+        <i3dMapping id="indoorArea3Start" node="0>3|2" />
+        <i3dMapping id="indoorArea3Width" node="0>3|2|0" />
+        <i3dMapping id="indoorArea3Height" node="0>3|2|1" />
+        <i3dMapping id="indoorArea4Start" node="0>3|3" />
+        <i3dMapping id="indoorArea4Width" node="0>3|3|0" />
+        <i3dMapping id="indoorArea4Height" node="0>3|3|1" />
+        <i3dMapping id="indoorArea5Start" node="0>3|4" />
+        <i3dMapping id="indoorArea5Width" node="0>3|4|0" />
+        <i3dMapping id="indoorArea5Height" node="0>3|4|1" />
+        <i3dMapping id="testArea1Start" node="0>4|0" />
+        <i3dMapping id="testArea1End" node="0>4|0|0" />
+        <i3dMapping id="testArea2Start" node="0>4|1" />
+        <i3dMapping id="testArea2End" node="0>4|1|0" />
+        <i3dMapping id="testArea3Start" node="0>4|2" />
+        <i3dMapping id="testArea3End" node="0>4|2|0" />
+        <i3dMapping id="tipOcclusionUpdateArea1Start" node="0>5|0" />
+        <i3dMapping id="tipOcclusionUpdateArea1End" node="0>5|0|0" />
+        <i3dMapping id="infoTrigger" node="0>6" />
+        <i3dMapping id="hotspotMarker" node="0>10" />
+        <i3dMapping id="teleportNode" node="0>11" />
+        <i3dMapping id="loadTriggerAiNode" node="0>12|0|0" />
+        <i3dMapping id="loadTriggerMarker" node="0>12|0|1" />
+        <i3dMapping id="loadTrigger" node="0>12|0|2" />
+        <i3dMapping id="unloadTriggerBunker" node="0>12|1|0" />
+        <i3dMapping id="unloadTriggerBunkerMarker" node="0>12|1|1" />
+        <i3dMapping id="baleTriggerBunker" node="0>12|1|2" />
+        <i3dMapping id="bunkerFillVolume" node="0>12|1|3" />
+        <i3dMapping id="unloadTriggerInFront" node="0>12|2|0" />
+        <i3dMapping id="baleTriggerInFront" node="0>12|2|1" />
+        <i3dMapping id="unloadTriggerInFrontAINode" node="0>12|2|2" />
+        <i3dMapping id="unloadTriggerLiquidManure" node="0>12|3|0" />
+        <i3dMapping id="unloadTriggerLiquidManureMarker" node="0>12|3|1" />
+        <i3dMapping id="unloadTriggerLiquidManureAiNode" node="0>12|3|2" />
+        <i3dMapping id="playerTrigger" node="0>12|4" />
+        <i3dMapping id="playerTriggerMarker" node="0>12|4|0" />
+    </i3dMappings>
+</placeable>

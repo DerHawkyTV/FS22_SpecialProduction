@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<modDesc descVersion="79">
+   <author>DerHawkyTV</author>
+   <version>1.0.0.1</version>
+	<title>
+        <en>DerHawkyTV Specialproduction</en>
+		<de>DerHawkyTV Spezialproduktion</de>
+    </title>
+    <description>
+<en><![CDATA[
+Grain Drying
+
+Input: Wheat, Barley, Maize, Oat (1,000 liters) | Diesel (20 liters)
+Output: Dryed Wheat, Barley, Maize, Oat (950 liters) | Stone (50 liters)
+- Price: $30,000
+
+Sale station for goods 
+- Price: $10,000
+
+
+Changelog Version 1.0.0.1
+
+- l10n adjusted 
+- The storage capacity has been increased at the request of the community]]></en>
+<de><![CDATA[
+DerHawkyTV Dünger Produktion:
+Version 1.0.0.0
+- Soon]]></de>
+</description>
+	<multiplayer supported="true" />
+    <iconFilename>icon_Getreidetrocknung_DS.dds</iconFilename>	
+
+    <storeItems>
+        <storeItem xmlFilename="xml/Getreidetrocknung_DS.xml"/>	
+        <storeItem xmlFilename="xml/Landhandel_kg_DS.xml"/>			
+    </storeItems>
+	<fillTypes filename="xml/newfilltypes.xml" />	
+<l10n>
+		<text name="fillType_wheat_drying">
+			<en>Dried Wheat</en>
+			<de>Getrockneter Weizen</de>
+		</text>
+		<text name="fillType_barley_drying">
+			<en>Dried Barley</en>
+			<de>Getrocknete Gerste</de>
+		</text>
+		<text name="fillType_maize_drying">
+			<en>Dried Maize</en>
+			<de>Getrockneter Mais</de>
+		</text>
+		<text name="fillType_oat_drying">
+			<en>Dried Oat</en>
+			<de>Getrockneter Hafer</de>
+		</text>	
+	</l10n>			
+</modDesc>
